@@ -14,9 +14,20 @@ Repositorio de Ingeniería y calidad de software, correspondiente al grupo del c
 
 # Estructura completa del repositorio
 
-* 2024_ICS_4K3_G
-  * Trabajos y actividades
-  * Recursos
+## 2024_ISW_4k3
+
+_ **Trabajos**
+   -Resolución Conceptual
+   -Resolución Práctico
+- **Recursos**
+  - **Parcial 1**
+    - Presentaciones de clases
+    - Templates de clases
+    - Material bibliográfico
+  - **Parcial 2**
+    - Presentaciones de clases
+    - Templates de clases
+    - Material bibliográfico
 
 # Listado de items de configuración
 
