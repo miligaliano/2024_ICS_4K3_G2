@@ -16,9 +16,9 @@ Repositorio de Ingeniería y calidad de software, correspondiente al grupo del c
 
 ## 2024_ISW_4k3
 
-_ **Trabajos**
-   -Resolución Conceptual
-   -Resolución Práctico
+- **Trabajos**
+   - Resolución Conceptual
+   - Resolución Práctico
 - **Recursos**
   - **Parcial 1**
     - Presentaciones de clases
