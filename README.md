@@ -1,6 +1,6 @@
-# 2024_ICS_4K3_G
+# 2024_ICS_4K3_G2
 
-Repositorio de Ingeniería y calidad de software, correspondiente al grupo del curso 4K3
+Repositorio de Ingeniería y calidad de software, correspondiente al grupo 2 del curso 4K3
 
 # Integrantes:
 | Nombre Completo        | Número de Identificación |
@@ -17,7 +17,7 @@ Repositorio de Ingeniería y calidad de software, correspondiente al grupo del c
 
 # Estructura completa del repositorio
 
-## 2024_ISW_4k3
+## 2024_ISW_4k3_G2
 
 - **Trabajos**
   - Resolución Conceptual
