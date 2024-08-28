@@ -49,8 +49,9 @@ Repositorio de Ingeniería y calidad de software, correspondiente al grupo 2 del
 |---------------|-------------------------------------------------------------------------------------------------------------|
 | &lt;AÑO&gt;         | Año de la modalidad académica.                                                                              |
 | &lt;TEMA&gt;        | Título del tema principal abordado en el ítem, que sirve para identificar el contenido central expuesto.    |
-| TP&lt;X&gt;         | Indica el número del trabajo práctico que se ha desarrollado, por ejemplo: TP1, TP2, TP11.                |
-| TC&lt;X&gt;         | Indica el número del trabajo conceptual que se ha desarrollado, por ejemplo: TC1, TC2.                      |
+| PPT&lt;N&gt;        | Indica el número de presentación que se está desarrollando, por ejemplo: PPT1, PPT2, PPT15.                |
+| TP&lt;N&gt;         | Indica el número del trabajo práctico que se ha desarrollado, por ejemplo: TP1, TP2, TP11.                |
+| TC&lt;N&gt;         | Indica el número del trabajo conceptual que se ha desarrollado, por ejemplo: TC1, TC2.                      |
 | &lt;NOMBRE&gt;      | Nombre del libro, apunte o material de la bibliografía asignada por la cátedra.                             |
 | &lt;U&gt;           | Indica la unidad a la que corresponde la bibliografía.                                                      |
 | Parcial&lt;N&gt;    | Indica los diferentes tipos de carpetas asignadas para cada parcial, por ejemplo: /Parcial1.                |
