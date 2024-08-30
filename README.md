@@ -35,19 +35,20 @@ Repositorio de Ingeniería y calidad de software, correspondiente al grupo 2 del
 
 | Nombre del Ítem de Configuración      | Regla de Nombrado                                      | Ubicación Física                                       |
 |---------------------------------------|--------------------------------------------------------|--------------------------------------------------------|
-| Modalidad Académica                   | MC\_&lt;AÑO&gt;.pdf                                    | /Recursos                                              |
-| Templates                             | Template\_&lt;TEMA&gt;.docx                            | /Recursos/Parcial&lt;N&gt;/Templates de clases         |
-| Presentaciones de clases              | PPT&lt;N&gt;\_&lt;TEMA&gt;.pdf                         | /Recursos/Parcial&lt;N&gt;/Presentaciones de clases    |
-| Trabajos Prácticos Resueltos          | Resolución\_TP&lt;N&gt;\_&lt;TEMA&gt;\_G2\_4K3\_2024.pdf | /Trabajos/Resolucion Práctico                          |
-| Trabajos Conceptuales Resueltos       | Resolución\_TC&lt;N&gt;\_&lt;TEMA&gt;\_G2\_4K3\_2024.pdf | /Trabajos/Resolución Conceptual                        |
-| Enunciados Evaluables                 | Enunciados\_&lt;TEMA&gt;\_&lt;AÑO&gt;.pdf              | /Trabajos                                              |
-| Bibliografía                          | Bibliografía\_U&lt;U&gt;\_&lt;NOMBRE&gt;.pdf           | /Recursos/Material Bibliográfico                       |
+| Modalidad Académica                   | MC\_&lt;AÑO&gt;.&lt;EXT&gt;                           | /Recursos                                              |
+| Templates                             | Template\_&lt;TEMA&gt;.&lt;EXT&gt;                           | /Recursos/Parcial&lt;N&gt;/Templates de clases         |
+| Presentaciones de clases              | PPT&lt;N&gt;\_&lt;TEMA&gt;.&lt;EXT&gt;                        | /Recursos/Parcial&lt;N&gt;/Presentaciones de clases    |
+| Trabajos Prácticos Resueltos          | Resolución\_TP&lt;N&gt;\_&lt;TEMA&gt;\_G2\_4K3\_2024.&lt;EXT&gt; | /Trabajos/Resolucion Práctico                          |
+| Trabajos Conceptuales Resueltos       | Resolución\_TC&lt;N&gt;\_&lt;TEMA&gt;\_G2\_4K3\_2024.&lt;EXT&gt; | /Trabajos/Resolución Conceptual                        |
+| Enunciados Evaluables                 | Enunciados\_&lt;TEMA&gt;\_&lt;AÑO&gt;.&lt;EXT&gt;             | /Trabajos                                              |
+| Bibliografía                          | Bibliografía\_U&lt;U&gt;\_&lt;NOMBRE&gt;.&lt;EXT&gt;          | /Recursos/Material Bibliográfico                       |
 
 ## Glosario
 
 | Siglas        | Significado                                                                                                 |
 |---------------|-------------------------------------------------------------------------------------------------------------|
 | &lt;AÑO&gt;         | Año de la modalidad académica.                                                                              |
+| &lt;EXT&gt;         | Indica la extensión del archivo, por ejemplo: pdf, docx.
 | &lt;TEMA&gt;        | Título del tema principal abordado en el ítem, que sirve para identificar el contenido central expuesto.    |
 | PPT&lt;N&gt;        | Indica el número de presentación que se está desarrollando, por ejemplo: PPT1, PPT2, PPT15.                |
 | TP&lt;N&gt;         | Indica el número del trabajo práctico que se ha desarrollado, por ejemplo: TP1, TP2, TP11.                |
