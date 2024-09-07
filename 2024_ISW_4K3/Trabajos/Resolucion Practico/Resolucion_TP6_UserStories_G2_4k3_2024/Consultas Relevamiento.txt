@@ -1,0 +1,6 @@
+1° - en cuanto al tipo de aplicación, el enunciado dice que es mobile, se puede hacer web?
+2° - con respecto al envió de las notificaciones ya sean push o email se tienen que enviar si o si a alguna casilla o como seria ? 
+en las pruebas de usuario se realizan pruebas de recepción de las mismas que deberíamos hacer en este caso ? 
+3° - en el criterio tipo de carga, harcodeamos los datos (documentación, paquete, granos, hacienda) ? 
+4° - Lo mismo podemos hacer con el domicilio ? 
+5° - El adjuntado de fotos no tengo claro como manejarlo tengo que investigar.
