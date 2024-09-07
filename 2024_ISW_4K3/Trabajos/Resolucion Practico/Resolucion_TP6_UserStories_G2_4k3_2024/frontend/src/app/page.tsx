@@ -1,35 +1,31 @@
 'use client';
 
-import { TextField } from "@mui/material";
+import { postPublicarPedido } from "@/services/publicacionService";
+import { Button, Grid, Typography } from "@mui/material";
+import { useState } from "react";
 
 
 
 export default function Page() {
+    const [datos, setDatos] = useState<string>("")
 
 
-
-    // const ejecutarSimulacion = async () =>{
-    //     const parametros = {
-    //         minutos: minutos,
-    //         minutosDesde: minutosDesde,
-    //         iteraciones: iteraciones,
-    //         llamadas: llamadas,
-    //         atenciones: atenciones,
-    //         representantesDesde: representantesDesde,
-    //         representantesHasta: representantesHasta,
-    //         porcentajeASuperar: porcentaje,
-    //         llamadasMax: llamadasMax
-    //     };
-
-    //     try {
-    //         const datos = await postEjecutarSimulacion(parametros)
-    //         setDatos(datos);
-    //     }catch (error) {
-    //         console.log("Error al ejecutar la simulaicon")
-    //     }        
-    // }
+    const publicarPedido = async () =>{
+        try {
+            const result = await postPublicarPedido()
+            console.log(result)
+            setDatos(result)
+        }catch (error) {
+            console.log("Error al ejecutar la simulaicon")
+        }        
+    }
 
     return <div>
-        <TextField> </TextField>
+        <Grid container spacing={2}> 
+            <Grid item>
+            <Button variant="outlined" onClick={publicarPedido}> Publicar pedido</Button>
+            <Typography variant="h1"> {datos} </Typography>
+            </Grid>   
+        </Grid>
     </div>
   }
