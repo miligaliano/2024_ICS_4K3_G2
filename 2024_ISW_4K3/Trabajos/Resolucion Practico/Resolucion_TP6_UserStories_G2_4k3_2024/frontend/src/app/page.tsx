@@ -1,7 +1,8 @@
 'use client';
 
+import MiSelect from "@/components/miSelect";
 import { postPublicarPedido } from "@/services/publicacionService";
-import { Box, Button, FormControl, Grid, InputLabel, MenuItem, Select, SelectChangeEvent, Typography } from "@mui/material";
+import { Button, Grid, Typography } from "@mui/material";
 import { useState } from "react";
 
 
@@ -30,7 +31,8 @@ export default function Page() {
            
             
         <Grid  item>
-        <miSelect></miSelect>    
+            <MiSelect>
+            </MiSelect>
         </Grid>   
         
         <Grid item>

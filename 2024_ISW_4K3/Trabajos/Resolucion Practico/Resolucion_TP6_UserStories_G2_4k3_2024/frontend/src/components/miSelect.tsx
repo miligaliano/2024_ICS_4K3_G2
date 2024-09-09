@@ -1,7 +1,7 @@
 import { Box, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from "@mui/material";
 import { useState } from "react";
 
-export default function miSelect(){
+export default function MiSelect(){
     const [tipoCarga, setTipoCarga] = useState('');
 
     const handleChange = (event: SelectChangeEvent) => {
@@ -26,7 +26,7 @@ export default function miSelect(){
                     <MenuItem value={30}>Hacienda</MenuItem>
                 </Select>
                 </FormControl>
-    
+
             </Box>
     </div>
 }
