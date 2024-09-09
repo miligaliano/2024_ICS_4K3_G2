@@ -1,6 +1,6 @@
 'use client';
 
-import MiSelect from "@/components/miSelect";
+import MiSelect from "@/components/MiSelect";
 import { postPublicarPedido } from "@/services/publicacionService";
 import { Button, Grid, Typography } from "@mui/material";
 import { useState } from "react";
