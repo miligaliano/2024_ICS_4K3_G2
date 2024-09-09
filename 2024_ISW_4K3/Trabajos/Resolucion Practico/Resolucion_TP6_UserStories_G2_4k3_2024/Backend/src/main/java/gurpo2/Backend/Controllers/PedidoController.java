@@ -13,6 +13,7 @@ public class PedidoController {
 
     @PostMapping("/publicar")
     public ResponseEntity<String> publicarEnvio(){
+        //return ResponseEntity.badRequest().build();
         return ResponseEntity.ok("Pedido publicado");
     }
 
