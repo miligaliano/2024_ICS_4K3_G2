@@ -1,9 +1,10 @@
 'use client';
 
-import MiSelect from "@/components/miSelect";
+
+import MiSelect from "@/components/MiSelect";
 import { postPublicarPedido } from "@/services/publicacionService";
-import { Button, Grid, Typography } from "@mui/material";
-import { useState } from "react";
+import { Alert, Button, Grid, IconButton, Snackbar, SnackbarCloseReason, Typography } from "@mui/material";
+import { Fragment, SyntheticEvent, useState } from "react";
 
 
 
@@ -12,19 +13,56 @@ export default function Page() {
 
 
     const [datos, setDatos] = useState<string>("")
-
+    const [open, setOpen] = useState(false);
 
     const publicarPedido = async () =>{
+        
+
+        const result = await postPublicarPedido()
+        setDatos(result)
         try {
-            const result = await postPublicarPedido()
-            console.log(result)
-            setDatos(result)
+            setOpen(true);
+            <Snackbar
+                open={open}
+                autoHideDuration={6000}
+                onClose={handleClose}
+                message="Note archived"
+                action={action}>
+                </Snackbar>
         }catch (error) {
-            console.log("Error al ejecutar la simulaicon")
+            setOpen(true);
+            <Alert severity="error">
+                No se pudo publciar
+            </Alert>
         }        
     }
+    
+      const handleClose = (
+        event: SyntheticEvent | Event,
+        reason?: SnackbarCloseReason,
+      ) => {
+        if (reason === 'clickaway') {
+          return;
+        }
+    
+        setOpen(false);
+      };
 
-   
+      const action = (
+        <Fragment>
+          <Button color="secondary" size="small" onClick={handleClose}>
+            UNDO
+          </Button>
+          <IconButton
+            size="small"
+            aria-label="close"
+            color="inherit"
+            onClick={handleClose}
+          >
+            <CloseIcon fontSize="small" />
+          </IconButton>
+        </Fragment>
+      );
 
     return <div>
         <Grid container spacing={2}> 
