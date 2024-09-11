@@ -4,7 +4,9 @@ import { useState } from "react"
 
 export default function Header(){
     return <div>
-        <Typography className={clases.header}>Publicar Pedido de Envio</Typography>
+        <Typography className={clases.header}>
+            <h1 className={clases.titulo}>Publicar Pedido de Envio</h1>
+        </Typography>
         
 
     </div>

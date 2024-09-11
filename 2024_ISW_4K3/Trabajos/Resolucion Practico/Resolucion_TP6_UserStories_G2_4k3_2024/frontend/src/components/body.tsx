@@ -51,8 +51,8 @@ export default function Body(){
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
 
        <Grid container spacing={2} >  
-        <Grid container spacing={2}  justifyContent={"center"} >
-            <Grid item xs={4} md={3}>
+        <Grid container spacing={2} className={clases.mainGrid}>
+            <Grid className={clases.campos}>
                 <FormControl fullWidth >
                     <InputLabel>Tipo de Carga</InputLabel>
                     <Select 
@@ -70,7 +70,7 @@ export default function Body(){
                 </FormControl>
             </Grid>  
 
-            <Grid item xs={4} md={1.5} justifyContent={"center"} >
+            <Grid item xs={4} className={clases.campos} >
                 <DatePicker 
                     disablePast
                     label="Fecha de Entrega"
@@ -80,7 +80,7 @@ export default function Body(){
                 />
             </Grid>
 
-            <Grid item xs={4} md={1.5} justifyContent={"center"} >
+            <Grid item xs={4} className={clases.campos}>
                 <DatePicker
                     disablePast
                     label="Fecha de Retiro"
@@ -90,6 +90,7 @@ export default function Body(){
                 />
             </Grid>
         </Grid>
+
 
         <Grid container spacing={2} sx={{marginLeft: 1, marginTop: 0.5}} justifyContent={"center"}>
             <Grid item xs={3} md={6.5}>
@@ -103,7 +104,7 @@ export default function Body(){
         </Grid>
 
         <Grid container spacing={2} sx={{marginLeft: 1, marginTop: 0.5}} justifyContent={"center"}>
-            <Grid item xs={3} md={7}>
+            <Grid item xs={3} md={6.5}>
                 <TextField
                     label="Domicilio de Retiro"
                     fullWidth
@@ -113,7 +114,7 @@ export default function Body(){
             </Grid> 
         </Grid>
 
-        <Grid container spacing={2} sx={{marginLeft: 1, marginTop: 0.5}} justifyContent={"center"}>
+        <Grid container spacing={2} className={clases.btnFotos}>
             <Grid item xs={3} md={7}>
                 <Button
                     variant="outlined"
@@ -147,7 +148,7 @@ export default function Body(){
             </Grid>
         </Grid>
 
-        <Grid container spacing={2} sx={{marginLeft: 1, marginTop: 0.5}} justifyContent={"center"}>
+        <Grid container spacing={2} className={clases.btnPedido}>
             <Grid item xs={6} md={7}>
 
                 
