@@ -1,20 +1,22 @@
-'use client';
-
 import { postPublicarPedido } from "@/services/publicacionService";
+import { Button, FormControl, Grid, ImageList, ImageListItem, InputLabel, MenuItem, Paper, Select, SelectChangeEvent, TextField } from "@mui/material"
+import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import dayjs, { Dayjs } from "dayjs";
+import { useSnackbar, VariantType } from "notistack";
 import { useState } from "react";
-import { Button, Grid, Typography, TextField, Select, MenuItem, InputLabel, FormControl, ImageList, ImageListItem } from "@mui/material";
-import * as AdapterDayjs from '@mui/x-date-pickers/AdapterDayjs';
-import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
-import dayjs, { Dayjs } from 'dayjs';
-import 'dayjs/locale/es';
-import { enqueueSnackbar } from 'notistack';
+import clases from "../Styles/Componente.module.css"
 
-export default function PublicarPedidoPage() {
-    const [tipoCarga, setTipoCarga] = useState("");
-    const [domicilioRetiro, setDomicilioRetiro] = useState("");
-    const [domicilioEntrega, setDomicilioEntrega] = useState("");
-    const [fechaRetiro, setFechaRetiro] = useState<Dayjs | null>(dayjs());
+
+export default function Body(){
+    
+    const [calleRetiro, setCalleRetiro] = useState("");
+    const [calleEntraga, setCalleEntrega] = useState("");
+
+    const [tipoCarga, setTipoCarga] = useState('');
     const [fechaEntrega, setFechaEntrega] = useState<Dayjs | null>(null);
+    const [fechaRetiro, setFechaRetiro] = useState<Dayjs | null>(dayjs());
+    const { enqueueSnackbar } = useSnackbar();
     const [fotos, setFotos] = useState<File[]>([]);
     const [fotoURLs, setFotoURLs] = useState<string[]>([]);
 
@@ -27,123 +29,165 @@ export default function PublicarPedidoPage() {
         setFotoURLs(newFotoURLs);
     };
 
-    const publicarPedido = async () => {
-        // Validaciones de fechas
-        if (!fechaRetiro || !fechaEntrega) {
-            enqueueSnackbar('Por favor, selecciona fechas válidas', { variant: 'error' });
-            return;
-        }
-        if (fechaRetiro.isBefore(dayjs())) {
-            enqueueSnackbar('La fecha de retiro debe ser igual o posterior a hoy', { variant: 'error' });
-            return;
-        }
-        if (fechaEntrega.isBefore(fechaRetiro)) {
-            enqueueSnackbar('La fecha de entrega debe ser igual o posterior a la fecha de retiro', { variant: 'error' });
-            return;
-        }
+    const handleChange = (event: SelectChangeEvent) => {
+        setTipoCarga(event.target.value as string);
+    };
 
+
+    const publicarPedido = async () => {
         try {
-            // Simular el envío del pedido
-            const result = await postPublicarPedido(
-            //     {
-            //     tipoCarga,
-            //     domicilioRetiro,
-            //     fechaRetiro: fechaRetiro.toISOString(),
-            //     domicilioEntrega,
-            //     fechaEntrega: fechaEntrega.toISOString(),
-            //     fotos,
-            // }
-        );
-            enqueueSnackbar('Pedido publicado con éxito', { variant: 'success' });
-            console.log(result);
+            await postPublicarPedido();
+            mostrarMensaje("Pedido publicado con éxito", "success"); 
         } catch (error) {
-            enqueueSnackbar('Error al publicar el pedido', { variant: 'error' });
-            console.error("Error al publicar el pedido", error);
+            mostrarMensaje("No se pudo publicar el pedido", "error"); 
         }
     };
 
-    return (
-        <LocalizationProvider dateAdapter={AdapterDayjs.AdapterDayjs} adapterLocale="es">
-            <Grid container spacing={2} justifyContent="center">
-                <Grid item xs={12} md={8}>
-                    <Typography variant="h4" gutterBottom>
-                        Publicar Pedido de Envío
-                    </Typography>
+    const mostrarMensaje = (mensaje: string, variant: VariantType) => {
+        enqueueSnackbar(mensaje, {variant});
+    };
 
-                    <FormControl fullWidth margin="normal">
-                        <InputLabel>Tipo de Carga</InputLabel>
-                        <Select value={tipoCarga} onChange={(e) => setTipoCarga(e.target.value)}>
-                            <MenuItem value="documentacion">Documentación</MenuItem>
-                            <MenuItem value="paquete">Paquete</MenuItem>
-                            <MenuItem value="granos">Granos</MenuItem>
-                            <MenuItem value="hacienda">Hacienda</MenuItem>
-                        </Select>
-                    </FormControl>
+    return <div className={clases.body}>
+        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
+       <Grid container spacing={2} sx={{ flexGrow: 1 }}> 
+        <Grid item xs={12} sx={{margin:"1%"}}>
+        <Grid container spacing={1}>
+            <Grid item xs={4}>
+                <FormControl fullWidth>
+                    <InputLabel>Tipo de Carga</InputLabel>
+                    <Select 
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        value={tipoCarga}
+                        label="Tipo de Carga"
+                        onChange={handleChange}
+                        >
+                        <MenuItem value={10}>Documentacion</MenuItem>
+                        <MenuItem value={20}>Paquete</MenuItem>
+                        <MenuItem value={30}>Granos</MenuItem>
+                        <MenuItem value={30}>Hacienda</MenuItem>
+                    </Select>
+                </FormControl>
+            </Grid>  
 
-                    <TextField
-                        label="Domicilio de Retiro"
-                        fullWidth
-                        margin="normal"
-                        value={domicilioRetiro}
-                        onChange={(e) => setDomicilioRetiro(e.target.value)}
-                    />
-
-                    <DatePicker
-                        label="Fecha de Retiro"
-                        value={fechaRetiro}
-                        onChange={(newValue) => setFechaRetiro(newValue)}
-                        renderInput={(params) => <TextField fullWidth margin="normal" {...params} />}
-                    />
-
-                    <TextField
-                        label="Domicilio de Entrega"
-                        fullWidth
-                        margin="normal"
-                        value={domicilioEntrega}
-                        onChange={(e) => setDomicilioEntrega(e.target.value)}
-                    />
-
-                    <DatePicker
-                        label="Fecha de Entrega"
-                        value={fechaEntrega}
-                        onChange={(newValue) => setFechaEntrega(newValue)}
-                        renderInput={(params) => <TextField fullWidth margin="normal" {...params} />}
-                    />
-
-                    {/* Botón para cargar fotos */}
-                    <Button
-                        variant="outlined"
-                        component="label"
-                        style={{ marginTop: '0.7em', marginLeft:'2em'}}
-                    >
-                        Subir Fotos
-                        <input
-                            accept="image/jpeg,image/png"
-                            type="file"
-                            multiple
-                            hidden
-                            onChange={handleFileChange}
-                        />
-                    </Button>
-
-                    {/* Visualizador de fotos */}
-                    <ImageList sx={{ width: '100%', height: 200 }} cols={3} rowHeight={164} style={{ marginTop: 16 }}>
-                        {fotoURLs.map((url, index) => (
-                            <ImageListItem key={index}>
-                                <img
-                                    src={url}
-                                    alt={`Foto ${index + 1}`}
-                                    loading="lazy"
-                                />
-                            </ImageListItem>
-                        ))}
-                    </ImageList>
-
-                    <Button variant="contained" color="primary" fullWidth onClick={publicarPedido} style={{ marginTop: 16 }}>
-                        Publicar Pedido
-                    </Button>
-                </Grid>
+            <Grid item xs={4}>
+                <DatePicker 
+                    disablePast
+                    label="Fecha de Entrega"
+                    value={fechaEntrega}
+                    onChange={(newValue) => setFechaEntrega(newValue)}
+                    renderInput={(params) => <TextField fullWidth margin="normal" {...params} />}
+                />
             </Grid>
+
+            <Grid item xs={4}>
+                <DatePicker
+                    disablePast
+                    label="Fecha de Retiro"
+                    value={fechaRetiro}
+                    onChange={(newValue) => setFechaRetiro(newValue)}
+                    renderInput={(params) => <TextField fullWidth margin="normal" {...params} />}
+                />
+            </Grid>
+        </Grid>        
+            </Grid> 
+        
+        
+
+
+        <Grid container spacing={2} sx={{marginLeft: 1, marginTop: 0.5}} justifyContent={"center"}>
+            <Grid item xs={4} md={6.5}>
+                <TextField
+                    label="Calle de Entrega"
+                    fullWidth
+                    value={calleEntraga}
+                    onChange={(e) => setCalleEntrega(e.target.value)}
+                    />
+            </Grid> 
+            <Grid item xs={3} md={12}>
+                <TextField
+                    label="numero"
+                    fullWidth
+                    value={calleEntraga}
+                    onChange={(e) => setCalleEntrega(e.target.value)}
+                    />
+            </Grid> 
+
+            <Grid item xs={3} md={6.5}>
+                <TextField
+                    label="localidad"
+                    fullWidth
+                    value={calleEntraga}
+                    onChange={(e) => setCalleEntrega(e.target.value)}
+                    />
+            </Grid> 
+
+            <Grid item xs={3} md={6.5}>
+                <TextField
+                    label="referencia"
+                    fullWidth
+                    value={calleEntraga}
+                    onChange={(e) => setCalleEntrega(e.target.value)}
+                    />
+            </Grid> 
+
+        </Grid>
+
+        <Grid container spacing={2} sx={{marginLeft: 1, marginTop: 0.5}} justifyContent={"center"}>
+            <Grid item xs={3} md={6.5}>
+                <TextField
+                    label="calle de Retiro"
+                    fullWidth
+                    value={calleRetiro}
+                    onChange={(e) => setCalleRetiro(e.target.value)}
+                    />
+            </Grid> 
+        </Grid>
+
+        <Grid container spacing={2} className={clases.btnFotos}>
+            <Grid item xs={3} md={7}>
+                <Button
+                    variant="outlined"
+                    component="label"
+                    >
+                    Subir Fotos
+                    <input
+                        accept="image/jpeg,image/png"
+                        type="file"
+                        multiple
+                        hidden
+                        onChange={handleFileChange}
+                    />
+                </Button>
+            </Grid> 
+        </Grid>
+
+        <Grid container spacing={2} sx={{marginLeft: 1, marginTop: 0.5}} justifyContent={"center"}>
+            <Grid item xs={3} md={5}>
+                <ImageList sx={{ width: '300%', height: 300 }} cols={3} rowHeight={164} style={{ marginTop: 16 }}>
+                    {fotoURLs.map((url, index) => (
+                        <ImageListItem key={index}>
+                            <img
+                                src={url}
+                                alt={`Foto ${index + 1}`}
+                                loading="lazy"
+                            />
+                        </ImageListItem>
+                    ))}
+                </ImageList>
+            </Grid>
+        </Grid>
+
+        <Grid container spacing={2} className={clases.btnPedido}>
+            <Grid item xs={6} md={7}>
+
+                
+                <Button variant="contained" onClick={publicarPedido} className={clases.boton}> Publicar pedido</Button>
+                
+            </Grid>
+
+            </Grid>
+        </Grid>
         </LocalizationProvider>
-    );
+    </div>
 }
