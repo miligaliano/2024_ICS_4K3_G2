@@ -3,7 +3,7 @@
 import { postPublicarPedido } from "@/services/publicacionService";
 import { useState } from "react";
 import { Button, Grid, Typography, TextField, Select, MenuItem, InputLabel, FormControl, ImageList, ImageListItem } from "@mui/material";
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import * as AdapterDayjs from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import dayjs, { Dayjs } from 'dayjs';
 import 'dayjs/locale/es';
@@ -63,7 +63,7 @@ export default function PublicarPedidoPage() {
     };
 
     return (
-        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
+        <LocalizationProvider dateAdapter={AdapterDayjs.AdapterDayjs} adapterLocale="es">
             <Grid container spacing={2} justifyContent="center">
                 <Grid item xs={12} md={8}>
                     <Typography variant="h4" gutterBottom>

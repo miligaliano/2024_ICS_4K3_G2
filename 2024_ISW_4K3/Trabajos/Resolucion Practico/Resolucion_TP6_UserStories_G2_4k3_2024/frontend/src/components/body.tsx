@@ -1,20 +1,17 @@
-'use client';
-
 import { postPublicarPedido } from "@/services/publicacionService";
-import { Button, FormControl, Grid, ImageList, ImageListItem, InputLabel, MenuItem, Paper, Select, SelectChangeEvent, TextField, Typography} from "@mui/material";
-import {  useState } from "react";
-import { VariantType, useSnackbar } from 'notistack';
+import { Button, FormControl, Grid, ImageList, ImageListItem, InputLabel, MenuItem, Select, SelectChangeEvent, TextField } from "@mui/material"
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs, { Dayjs } from "dayjs";
+import { useSnackbar, VariantType } from "notistack";
+import { useState } from "react";
 import clases from "../Styles/Componente.module.css"
 
 
-
-export default function App() {
-
+export default function Body(){
+    
     const [domicilioRetiro, setDomicilioRetiro] = useState("");
-    const [domicilioEntrega, setdomicilioEntrega] = useState("");
+    const [domicilioEntrega, setDomicilioEntrega] = useState("");
 
     const [tipoCarga, setTipoCarga] = useState('');
     const [fechaEntrega, setFechaEntrega] = useState<Dayjs | null>(null);
@@ -48,14 +45,12 @@ export default function App() {
 
     const mostrarMensaje = (mensaje: string, variant: VariantType) => {
         enqueueSnackbar(mensaje, {variant});
-      };
+    };
 
-
-    return <div>
+    return <div className={clases.body}>
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
-        <Paper elevation={24} sx={{marginLeft: 50, marginRight: 60, padding: 2}} className={clases.body}>
 
-        <Grid container spacing={2} >  
+       <Grid container spacing={2} >  
         <Grid container spacing={2}  justifyContent={"center"} >
             <Grid item xs={4} md={3}>
                 <FormControl fullWidth >
@@ -75,7 +70,7 @@ export default function App() {
                 </FormControl>
             </Grid>  
 
-            <Grid item xs={4} md={2} justifyContent={"center"} >
+            <Grid item xs={4} md={1.5} justifyContent={"center"} >
                 <DatePicker 
                     disablePast
                     label="Fecha de Entrega"
@@ -85,7 +80,7 @@ export default function App() {
                 />
             </Grid>
 
-            <Grid item xs={4} md={2} justifyContent={"center"} >
+            <Grid item xs={4} md={1.5} justifyContent={"center"} >
                 <DatePicker
                     disablePast
                     label="Fecha de Retiro"
@@ -97,12 +92,12 @@ export default function App() {
         </Grid>
 
         <Grid container spacing={2} sx={{marginLeft: 1, marginTop: 0.5}} justifyContent={"center"}>
-            <Grid item xs={3} md={7}>
+            <Grid item xs={3} md={6.5}>
                 <TextField
                     label="Domicilio de Entrega"
                     fullWidth
                     value={domicilioEntrega}
-                    onChange={(e) => setDomicilioRetiro(e.target.value)}
+                    onChange={(e) => setDomicilioEntrega(e.target.value)}
                     />
             </Grid> 
         </Grid>
@@ -152,18 +147,16 @@ export default function App() {
             </Grid>
         </Grid>
 
-        <Grid container spacing={2} sx={{marginLeft: 1, marginTop: 0.5}} justifyContent={"center"} className={clases.footer}>
+        <Grid container spacing={2} sx={{marginLeft: 1, marginTop: 0.5}} justifyContent={"center"}>
             <Grid item xs={6} md={7}>
 
-                <button>Realizar Pedido</button>
-                {/* <Button variant="contained" onClick={publicarPedido} className={clases.boton}> Publicar pedido</Button>
-                */}
+                
+                <Button variant="contained" onClick={publicarPedido} className={clases.boton}> Publicar pedido</Button>
+                
             </Grid>
 
             </Grid>
         </Grid>
-
-        </Paper>
         </LocalizationProvider>
     </div>
-  }
+}
