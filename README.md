@@ -38,8 +38,8 @@ Repositorio de Ingeniería y calidad de software, correspondiente al grupo 2 del
 | Modalidad Académica                   | MC\_&lt;AÑO&gt;.&lt;EXT&gt;                           | /Recursos                                              |
 | Templates                             | Template\_&lt;TEMA&gt;.&lt;EXT&gt;                           | /Recursos/Parcial&lt;N&gt;/Templates de clases         |
 | Presentaciones de clases              | PPT&lt;N&gt;\_&lt;TEMA&gt;.&lt;EXT&gt;                        | /Recursos/Parcial&lt;N&gt;/Presentaciones de clases    |
-| Trabajos Prácticos Resueltos          | Resolución\_TP&lt;N&gt;\_&lt;TEMA&gt;\_G2\_4K3\_2024.&lt;EXT&gt; | /Trabajos/Resolucion Práctico                          |
-| Trabajos Conceptuales Resueltos       | Resolución\_TC&lt;N&gt;\_&lt;TEMA&gt;\_G2\_4K3\_2024.&lt;EXT&gt; | /Trabajos/Resolución Conceptual                        |
+| Trabajos Prácticos Resueltos          | Resolución\_TP&lt;N&gt;\_&lt;TEMA&gt;\_G2\_4K3\_2024.&lt;EXT&gt; | /Trabajos/Resolucion Práctico/Resolucion_TP&lt;N&gt;_&lt;TEMA&gt;_G2_4k3_2024                          |
+| Trabajos Conceptuales Resueltos       | Resolución\_TC&lt;N&gt;\_&lt;TEMA&gt;\_G2\_4K3\_2024.&lt;EXT&gt; | /Trabajos/Resolución Conceptual/Resolucion_TP&lt;N&gt;_&lt;TEMA&gt;_G2_4k3_2024                          |                        |
 | Enunciados Evaluables                 | Enunciados\_&lt;TEMA&gt;\_&lt;AÑO&gt;.&lt;EXT&gt;             | /Trabajos                                              |
 | Bibliografía                          | Bibliografía\_U&lt;U&gt;\_&lt;NOMBRE&gt;.&lt;EXT&gt;          | /Recursos/Material Bibliográfico                       |
 
