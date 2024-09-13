@@ -41,7 +41,7 @@ export default function Body() {
 
   const [tipoCarga, setTipoCarga] = useState("");
   const [fechaEntrega, setFechaEntrega] = useState<Dayjs | null>(null);
-  const [fechaRetiro, setFechaRetiro] = useState<Dayjs | null>(dayjs());
+  const [fechaRetiro, setFechaRetiro] = useState<Dayjs | null>(null);
   const { enqueueSnackbar } = useSnackbar();
   const [fotos, setFotos] = useState<File[]>([]);
   const [fotoURLs, setFotoURLs] = useState<string[]>([]);
@@ -84,7 +84,11 @@ export default function Body() {
   };
 
   console.log("Domicilio Entrega", domicilioEntrega)
-  
+  console.log("Domicilio Retiro", domicilioRetiro)
+  console.log("fecha Entrega", fechaEntrega)
+  console.log("fecha Retiro", fechaRetiro)
+
+
   return (
     <div className={clases.body}>
       <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
