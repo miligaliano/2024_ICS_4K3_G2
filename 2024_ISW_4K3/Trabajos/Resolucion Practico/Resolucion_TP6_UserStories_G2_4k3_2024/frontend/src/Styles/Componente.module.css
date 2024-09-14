@@ -26,6 +26,7 @@ Componente.module.css
     max-width: 100%;
     overflow-x: hidden;
     overflow-y: hidden;
+
 }
 
 .campos {
@@ -65,8 +66,14 @@ Componente.module.css
     margin: 0 auto 50px auto;
 }
 
+.btnColor {
+    background-color: #90E0EF;
+    color:#000000;
+}
+
+
 .footer {
-    background-color: #2C3E50; 
+    background-color: #0077B6; 
     color: #ECF0F1; 
     padding: 20px 10px; 
     margin-top: 20px; 
@@ -127,7 +134,7 @@ Componente.module.css
     align-items: center;
     text-align: center;
     padding: 10px 20px; 
-    background-color: #2C3E50;
+    background-color: #0077B6;
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1); 
 }
 

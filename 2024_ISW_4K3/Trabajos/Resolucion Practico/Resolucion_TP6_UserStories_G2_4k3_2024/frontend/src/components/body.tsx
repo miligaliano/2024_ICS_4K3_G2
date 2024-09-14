@@ -352,7 +352,7 @@ export default function Body() {
             </Grid>
 
             <Grid item xs={12}>
-              <Button variant="contained" component="label">
+              <Button variant="contained" component="label" className={clases.btnColor}>
                 Subir Fotos
                 <input
                   accept="image/jpeg,image/png"
@@ -380,7 +380,7 @@ export default function Body() {
             </Grid>
 
             <Grid item xs={12}>
-              <Button variant="contained" onClick={publicarPedido}>
+              <Button variant="contained" onClick={publicarPedido} className={clases.btnColor}>
                 Publicar pedido
               </Button>
             </Grid>
