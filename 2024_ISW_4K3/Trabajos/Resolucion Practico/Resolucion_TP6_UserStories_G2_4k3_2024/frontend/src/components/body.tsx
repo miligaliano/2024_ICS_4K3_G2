@@ -46,6 +46,8 @@ export default function Body() {
   const [fotos, setFotos] = useState<File[]>([]);
   const [fotoURLs, setFotoURLs] = useState<string[]>([]);
 
+  
+
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files ? Array.from(e.target.files) : [];
     setFotos(files);
@@ -71,12 +73,28 @@ export default function Body() {
   };
 
   const publicarPedido = async () => {
+    if(!fechaRetiro || !fechaEntrega){
+      enqueueSnackbar('Por favor, selecciona fechas validas',{variant:'error'});
+      return;
+    }
+
+    if (fechaRetiro.isBefore(dayjs())){
+      enqueueSnackbar('La fecha de retiro debe ser igual o posterior a hoy',{variant:'error'});
+      return;
+    }
+
+    if (fechaEntrega.isBefore(fechaRetiro)){
+      enqueueSnackbar('La fecha de entrega debe ser igual o posterior a la fecha de retiro',{variant:'error'});
+      return;
+    }
+
     try {
       await postPublicarPedido();
       mostrarMensaje("Pedido publicado con éxito", "success");
     } catch (error) {
       mostrarMensaje("No se pudo publicar el pedido", "error");
     }
+
   };
 
   const mostrarMensaje = (mensaje: string, variant: VariantType) => {

@@ -76,7 +76,8 @@ Componente.module.css
     background-color: #0077B6; 
     color: #ECF0F1; 
     padding: 20px 10px; 
-    margin-top: 20px; 
+    /*padding-bottom: 70px;*/
+    margin-top: 55px; 
     text-align: left;
 }
 

@@ -20,6 +20,7 @@ export default function Page() {
                     overflow-x: hidden;
                 }
             `}</style>
+            <link rel="stylesheet" href="" />
 
             <div className={clases.global}>
                 <div className={clases.main}>
