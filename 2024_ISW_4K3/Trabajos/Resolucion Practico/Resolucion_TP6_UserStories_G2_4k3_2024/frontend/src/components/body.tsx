@@ -22,6 +22,7 @@ import { useSnackbar, VariantType } from "notistack";
 import { useState } from "react";
 import clases from "../Styles/Componente.module.css";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { truncate } from "fs";
 
 export default function Body() {
   const [domicilioRetiro, setDomicilioRetiro] = useState({
@@ -88,12 +89,40 @@ export default function Body() {
       return;
     }
 
+    const parametros = {
+      tipoCarga:tipoCarga,
+
+      fechas:{
+        fechaEntrega:fechaEntrega,
+        fechaRetiro:fechaRetiro
+      },
+
+      domicilioEntrega:{
+        calle: domicilioEntrega.calle,
+        numero: domicilioEntrega.numero,
+        localidad: domicilioEntrega.localidad,
+        provincia: domicilioEntrega.provincia,
+        referencia: domicilioEntrega.referencia
+      },
+      domicilioRetiro:{
+        calle: domicilioRetiro.calle,
+        numero: domicilioRetiro.numero,
+        localidad: domicilioRetiro.localidad,
+        provincia: domicilioRetiro.provincia,
+        referencia: domicilioRetiro.referencia
+      }
+    }
+
+    console.log('parametros',parametros)
+
     try {
-      await postPublicarPedido();
+      await postPublicarPedido(parametros);
       mostrarMensaje("Pedido publicado con éxito", "success");
     } catch (error) {
       mostrarMensaje("No se pudo publicar el pedido", "error");
     }
+
+    
 
   };
 
@@ -101,10 +130,15 @@ export default function Body() {
     enqueueSnackbar(mensaje, { variant });
   };
 
+  /*
   console.log("Domicilio Entrega", domicilioEntrega)
   console.log("Domicilio Retiro", domicilioRetiro)
+  console.log("Tipo de Carga", tipoCarga)
   console.log("fecha Entrega", fechaEntrega)
   console.log("fecha Retiro", fechaRetiro)
+  */
+
+
 
 
   return (
@@ -143,10 +177,10 @@ export default function Body() {
                           label="Tipo de Carga"
                           onChange={handleChangeTipoCarga}
                         >
-                          <MenuItem value={10}>Documentación</MenuItem>
-                          <MenuItem value={20}>Paquete</MenuItem>
-                          <MenuItem value={30}>Granos</MenuItem>
-                          <MenuItem value={40}>Hacienda</MenuItem>
+                          <MenuItem value={'Documentacion'}>Documentación</MenuItem>
+                          <MenuItem value={'Paquete'}>Paquete</MenuItem>
+                          <MenuItem value={'Granos'}>Granos</MenuItem>
+                          <MenuItem value={'Hacienda'}>Hacienda</MenuItem>
                         </Select>
                       </FormControl>
                     </Grid>
@@ -398,7 +432,7 @@ export default function Body() {
             </Grid>
 
             <Grid item xs={12}>
-              <Button variant="contained" onClick={publicarPedido} className={clases.btnColor}>
+              <Button variant="contained" disabled={false} onClick={publicarPedido} className={clases.btnColor}>
                 Publicar pedido
               </Button>
             </Grid>
