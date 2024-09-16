@@ -18,6 +18,11 @@ import {
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs, { Dayjs } from "dayjs";
+
+import 'dayjs/locale/es'; // Importar el locale en español
+
+dayjs.locale('es'); // Configura el locale
+
 import { useSnackbar, VariantType } from "notistack";
 import { useState } from "react";
 import clases from "../Styles/Componente.module.css";

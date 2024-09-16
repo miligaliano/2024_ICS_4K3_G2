@@ -17,7 +17,6 @@ import clases from "../Styles/Componente.module.css";
 import Notificaciones from "./notificaciones";
 import UsuarioLogueado from "./User";
 
-
 export default function Header() {
     return (
         <div className={clases.header}>
@@ -31,5 +30,6 @@ export default function Header() {
         </div>
     );
 }
+
 
 

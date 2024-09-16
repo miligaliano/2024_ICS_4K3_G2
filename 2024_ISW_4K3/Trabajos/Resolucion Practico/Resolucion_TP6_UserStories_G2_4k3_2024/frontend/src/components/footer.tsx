@@ -17,7 +17,7 @@ export default function Footer() {
                 </Grid>
 
                 {/* Sección 2: Enlaces rápidos */}
-                <Grid item xs={12} sm={4}>
+                {/* <Grid item xs={12} sm={4}>
                     <Typography variant="h6" className={clases.footerSection}>
                         Enlaces rápidos
                     </Typography>
@@ -38,7 +38,7 @@ export default function Footer() {
                             </Link>
                         </li>
                     </ul>
-                </Grid>
+                </Grid> */}
 
                 {/* Sección 3: Redes sociales */}
                 <Grid item xs={12} sm={4}>

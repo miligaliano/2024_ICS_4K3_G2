@@ -26,6 +26,8 @@ Componente.module.css
     max-width: 100%;
     overflow-x: hidden;
     overflow-y: hidden;
+    font-family: sans-serif; 
+
 
 }
 
@@ -64,11 +66,12 @@ Componente.module.css
     justify-content: center;
     text-align: center;
     margin: 0 auto 50px auto;
+
 }
 
 .btnColor {
-    background-color: #90E0EF;
-    color:#000000;
+    background-color: #0077B6;
+    color:#ffffff;
 }
 
 
@@ -79,6 +82,8 @@ Componente.module.css
     /*padding-bottom: 70px;*/
     margin-top: 55px; 
     text-align: left;
+    font-family: sans-serif; 
+
 }
 
 .footerTitle {
@@ -86,11 +91,15 @@ Componente.module.css
     font-weight: bold;
     color: #ECF0F1;
     margin-bottom: 5px; 
+    font-family: sans-serif; 
+
 }
 
 .footerSubtitle {
     color: #BDC3C7; 
     font-size: 12px; 
+    font-family: sans-serif; 
+
 }
 
 .footerSection {
@@ -137,6 +146,18 @@ Componente.module.css
     padding: 10px 20px; 
     background-color: #0077B6;
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1); 
+    justify-content: space-between; /* Distribuye el espacio entre los elementos */
+    align-items: center; /* Alinea verticalmente el contenido en el centro */
+
+}
+.left {
+    display: flex;
+    align-items: center;
+}
+
+.right {
+    display: flex;
+    align-items: center;
 }
 
 .titulo {
@@ -144,13 +165,19 @@ Componente.module.css
     font-weight: bold;
     color: #ECF0F1;
     font-family: 'Poppins', sans-serif;
+   
 }
 
 .iconos {
     display: flex;
     align-items: center;
     gap: 15px; 
+
 }
+
+.iconos > *:not(:last-child) {
+    margin-right: 90px; /* espacio entre los iconos  */
+  }
 
 .iconos .MuiBadge-badge {
     background-color: #E74C3C; 
