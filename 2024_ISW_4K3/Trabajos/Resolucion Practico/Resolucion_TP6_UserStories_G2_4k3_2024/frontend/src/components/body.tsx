@@ -135,17 +135,6 @@ export default function Body() {
     enqueueSnackbar(mensaje, { variant });
   };
 
-  /*
-  console.log("Domicilio Entrega", domicilioEntrega)
-  console.log("Domicilio Retiro", domicilioRetiro)
-  console.log("Tipo de Carga", tipoCarga)
-  console.log("fecha Entrega", fechaEntrega)
-  console.log("fecha Retiro", fechaRetiro)
-  */
-
-
-
-
   return (
     <div className={clases.body}>
       <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="es">
@@ -189,13 +178,13 @@ export default function Body() {
                         </Select>
                       </FormControl>
                     </Grid>
-
+                    
                     <Grid item xs={12}>
                       <DatePicker
                         disablePast
-                        label="Fecha de Entrega"
-                        value={fechaEntrega}
-                        onChange={(newValue) => setFechaEntrega(newValue)}
+                        label="Fecha de Retiro"
+                        value={fechaRetiro}
+                        onChange={(newValue) => setFechaRetiro(newValue)}
                         renderInput={(params) => (
                           <TextField fullWidth margin="normal" {...params} />
                         )}
@@ -205,9 +194,9 @@ export default function Body() {
                     <Grid item xs={12}>
                       <DatePicker
                         disablePast
-                        label="Fecha de Retiro"
-                        value={fechaRetiro}
-                        onChange={(newValue) => setFechaRetiro(newValue)}
+                        label="Fecha de Entrega"
+                        value={fechaEntrega}
+                        onChange={(newValue) => setFechaEntrega(newValue)}
                         renderInput={(params) => (
                           <TextField fullWidth margin="normal" {...params} />
                         )}
