@@ -15,11 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 public class PedidoController {
 
+    private PedidoService pedidoService;
+
     @PostMapping("/publicar")
     public ResponseEntity<String> publicarEnvio( @RequestBody @Valid DatosRequest datosRequest){
         System.out.println(datosRequest);
         System.out.println(datosRequest.getDomicilioEntrega());
         System.out.println(datosRequest.getDomicilioRetiro());
+        pedidoService.enviarMail();
         //return ResponseEntity.badRequest().build();
         return ResponseEntity.ok("Pedido publicado");
     }
