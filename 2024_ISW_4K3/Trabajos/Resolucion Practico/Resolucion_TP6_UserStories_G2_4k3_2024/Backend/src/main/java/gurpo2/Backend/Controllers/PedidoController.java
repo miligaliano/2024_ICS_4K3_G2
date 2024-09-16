@@ -11,19 +11,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:3000")
 public class PedidoController {
 
     private final PedidoService pedidoService;
 
     @PostMapping("/publicar")
     public ResponseEntity<String> publicarEnvio( @RequestBody @Valid DatosRequest datosRequest){
-        System.out.println(datosRequest);
-        System.out.println(datosRequest.getDomicilioEntrega());
-        System.out.println(datosRequest.getDomicilioRetiro());
-        pedidoService.enviarMail();
-        //return ResponseEntity.badRequest().build();
+        pedidoService.enviarMail(datosRequest);
         return ResponseEntity.ok("Pedido publicado");
     }
 

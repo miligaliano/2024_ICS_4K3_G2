@@ -17,9 +17,11 @@ import java.util.Date;
 @NoArgsConstructor
 public class Fechas {
 
+
     @NotNull(message = "La fecha de entrega no puede ser nula.")
     Date fechaEntrega;
 
     @NotNull(message = "La fecha de retiro no puede ser nula.")
     Date fechaRetiro;
+
 }
