@@ -1,5 +1,7 @@
 package gurpo2.Backend.Services;
 
+import javax.mail.MessagingException;
+
 public class PedidoService {
 
     public void enviarMail(){
