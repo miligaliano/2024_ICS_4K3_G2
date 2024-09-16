@@ -27,7 +27,7 @@ import { useSnackbar, VariantType } from "notistack";
 import { useState } from "react";
 import clases from "../Styles/Componente.module.css";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { truncate } from "fs";
+
 
 export default function Body() {
   const [domicilioRetiro, setDomicilioRetiro] = useState({
@@ -84,7 +84,7 @@ export default function Body() {
       return;
     }
 
-    if (fechaRetiro.isBefore(dayjs())){
+    if (fechaRetiro.isBefore(dayjs().day() - 1)){
       enqueueSnackbar('La fecha de retiro debe ser igual o posterior a hoy',{variant:'error'});
       return;
     }
