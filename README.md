@@ -44,6 +44,7 @@ Repositorio de Ingeniería y calidad de software, correspondiente al grupo 2 del
 | Bibliografía                          | Bibliografía\_U&lt;U&gt;\_&lt;NOMBRE&gt;.&lt;EXT&gt;          | /Recursos/Material Bibliográfico                       |
 | Cronograma                          | Cronograma_2024_2doCuatri.&lt;EXT&gt;         | /Recursos                    |
 | Clases Grabadas                         | ClasesGrabadas.&lt;EXT&gt;         | /Recursos                    |
+| Documento de estilos de código                        | Documento_Estilos.&lt;EXT&gt;         | /Trabajos/Resolucion Práctico/Resolucion_TP&lt;N&gt;_&lt;TEMA&gt;_G2_4k3_2024                   |
 
 ## Glosario
 
