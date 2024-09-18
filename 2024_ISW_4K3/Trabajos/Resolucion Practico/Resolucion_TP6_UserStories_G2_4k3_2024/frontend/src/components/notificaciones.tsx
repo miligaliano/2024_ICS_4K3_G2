@@ -6,7 +6,6 @@ export default function Notificaciones() {
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
 
-    // Ejemplo de notificaciones (puedes obtenerlas dinámicamente)
     const notificaciones = [
         "Notif 1",
         "Notif 2",

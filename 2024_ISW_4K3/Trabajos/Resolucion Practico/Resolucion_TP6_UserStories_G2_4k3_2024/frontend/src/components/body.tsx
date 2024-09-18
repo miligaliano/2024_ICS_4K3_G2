@@ -1,4 +1,7 @@
-import { postPublicarPedido } from "@/services/publicacionService";
+import {
+  obtenerProvinciasYLocalidades,
+  postPublicarPedido,
+} from "@/services/publicacionService";
 import {
   Accordion,
   AccordionDetails,
@@ -18,16 +21,12 @@ import {
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs, { Dayjs } from "dayjs";
-
-import 'dayjs/locale/es'; // Importar el locale en español
-
-dayjs.locale('es'); // Configura el locale
-
+import "dayjs/locale/es";
+dayjs.locale("es");
 import { useSnackbar, VariantType } from "notistack";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import clases from "../Styles/Componente.module.css";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-
 
 export default function Body() {
   const [domicilioRetiro, setDomicilioRetiro] = useState({
@@ -44,6 +43,10 @@ export default function Body() {
     provincia: "",
     referencia: "",
   });
+  const [data1, setData1] = useState([]);
+  const [data2, setData2] = useState([]);
+  const [localidadesRetiro, setLocalidadesRetiro] = useState([]);
+  const [localidadesEntrega, setLocalidadesEntrega] = useState([]);
 
   const [tipoCarga, setTipoCarga] = useState("");
   const [fechaEntrega, setFechaEntrega] = useState<Dayjs | null>(null);
@@ -51,8 +54,6 @@ export default function Body() {
   const { enqueueSnackbar } = useSnackbar();
   const [fotos, setFotos] = useState<File[]>([]);
   const [fotoURLs, setFotoURLs] = useState<string[]>([]);
-
-  
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files ? Array.from(e.target.files) : [];
@@ -79,46 +80,51 @@ export default function Body() {
   };
 
   const publicarPedido = async () => {
-    if(!fechaRetiro || !fechaEntrega){
-      enqueueSnackbar('Por favor, selecciona fechas validas',{variant:'error'});
+    if (!fechaRetiro || !fechaEntrega) {
+      enqueueSnackbar("Por favor, selecciona fechas validas", {
+        variant: "error",
+      });
       return;
     }
 
-    if (fechaRetiro.isBefore(dayjs().day() - 1)){
-      enqueueSnackbar('La fecha de retiro debe ser igual o posterior a hoy',{variant:'error'});
+    if (fechaRetiro.isBefore(dayjs().day() - 1)) {
+      enqueueSnackbar("La fecha de retiro debe ser igual o posterior a hoy", {
+        variant: "error",
+      });
       return;
     }
 
-    if (fechaEntrega.isBefore(fechaRetiro)){
-      enqueueSnackbar('La fecha de entrega debe ser igual o posterior a la fecha de retiro',{variant:'error'});
+    if (fechaEntrega.isBefore(fechaRetiro)) {
+      enqueueSnackbar(
+        "La fecha de entrega debe ser igual o posterior a la fecha de retiro",
+        { variant: "error" }
+      );
       return;
     }
 
     const parametros = {
-      tipoCarga:tipoCarga,
+      tipoCarga: tipoCarga,
 
-      fechas:{
-        fechaEntrega:fechaEntrega,
-        fechaRetiro:fechaRetiro
+      fechas: {
+        fechaEntrega: fechaEntrega,
+        fechaRetiro: fechaRetiro,
       },
 
-      domicilioEntrega:{
+      domicilioEntrega: {
         calle: domicilioEntrega.calle,
         numero: domicilioEntrega.numero,
         localidad: domicilioEntrega.localidad,
         provincia: domicilioEntrega.provincia,
-        referencia: domicilioEntrega.referencia
+        referencia: domicilioEntrega.referencia,
       },
-      domicilioRetiro:{
+      domicilioRetiro: {
         calle: domicilioRetiro.calle,
         numero: domicilioRetiro.numero,
         localidad: domicilioRetiro.localidad,
         provincia: domicilioRetiro.provincia,
-        referencia: domicilioRetiro.referencia
-      }
-    }
-
-    console.log('parametros',parametros)
+        referencia: domicilioRetiro.referencia,
+      },
+    };
 
     try {
       await postPublicarPedido(parametros);
@@ -126,14 +132,39 @@ export default function Body() {
     } catch (error) {
       mostrarMensaje("No se pudo publicar el pedido", "error");
     }
-
-    
-
   };
 
   const mostrarMensaje = (mensaje: string, variant: VariantType) => {
     enqueueSnackbar(mensaje, { variant });
   };
+
+  useEffect(() => {
+    const fetchProvinciasLocalidades = async () => {
+      try {
+        const data = await obtenerProvinciasYLocalidades();
+        setData1(data);
+        setData2(data);
+      } catch (error) {
+        console.error("Error al obtener datos:", error);
+      }
+    };
+
+    fetchProvinciasLocalidades();
+  }, []);
+
+  useEffect(() => {
+    if (domicilioRetiro.provincia) {
+      setLocalidadesRetiro(data1[domicilioRetiro.provincia] || []);
+      handleChangeDomicilio("retiro", "localidad", "");
+    }
+  }, [domicilioRetiro.provincia, data1]);
+
+  useEffect(() => {
+    if (domicilioEntrega.provincia) {
+      setLocalidadesEntrega(data2[domicilioEntrega.provincia] || []);
+      handleChangeDomicilio("entrega", "localidad", "");
+    }
+  }, [domicilioEntrega.provincia, data2]);
 
   return (
     <div className={clases.body}>
@@ -171,14 +202,16 @@ export default function Body() {
                           label="Tipo de Carga"
                           onChange={handleChangeTipoCarga}
                         >
-                          <MenuItem value={'Documentacion'}>Documentación</MenuItem>
-                          <MenuItem value={'Paquete'}>Paquete</MenuItem>
-                          <MenuItem value={'Granos'}>Granos</MenuItem>
-                          <MenuItem value={'Hacienda'}>Hacienda</MenuItem>
+                          <MenuItem value={"Documentacion"}>
+                            Documentación
+                          </MenuItem>
+                          <MenuItem value={"Paquete"}>Paquete</MenuItem>
+                          <MenuItem value={"Granos"}>Granos</MenuItem>
+                          <MenuItem value={"Hacienda"}>Hacienda</MenuItem>
                         </Select>
                       </FormControl>
                     </Grid>
-                    
+
                     <Grid item xs={12}>
                       <DatePicker
                         disablePast
@@ -253,20 +286,6 @@ export default function Body() {
                     </Grid>
 
                     <Grid item xs={12}>
-                      <TextField
-                        label="Localidad de Retiro"
-                        value={domicilioRetiro.localidad}
-                        onChange={(e) =>
-                          handleChangeDomicilio(
-                            "retiro",
-                            "localidad",
-                            e.target.value
-                          )
-                        }
-                      />
-                    </Grid>
-
-                    <Grid item xs={12}>
                       <FormControl sx={{ width: "76%" }}>
                         <InputLabel>Provincia de Retiro</InputLabel>
                         <Select
@@ -279,7 +298,33 @@ export default function Body() {
                             )
                           }
                         >
-                          <MenuItem value="Buenos Aires">Buenos Aires</MenuItem>
+                          {Object.keys(data1).map((provincia) => (
+                            <MenuItem key={provincia} value={provincia}>
+                              {provincia}
+                            </MenuItem>
+                          ))}
+                        </Select>
+                      </FormControl>
+                    </Grid>
+
+                    <Grid item xs={12}>
+                      <FormControl sx={{ width: "76%" }}>
+                        <InputLabel>Localidad de Retiro</InputLabel>
+                        <Select
+                          value={domicilioRetiro.localidad}
+                          onChange={(e) =>
+                            handleChangeDomicilio(
+                              "retiro",
+                              "localidad",
+                              e.target.value
+                            )
+                          }
+                        >
+                          {localidadesRetiro.map((localidad) => (
+                            <MenuItem key={localidad} value={localidad}>
+                              {localidad}
+                            </MenuItem>
+                          ))}
                         </Select>
                       </FormControl>
                     </Grid>
@@ -348,22 +393,8 @@ export default function Body() {
                     </Grid>
 
                     <Grid item xs={12}>
-                      <TextField
-                        label="Localidad de Entrega"
-                        value={domicilioEntrega.localidad}
-                        onChange={(e) =>
-                          handleChangeDomicilio(
-                            "entrega",
-                            "localidad",
-                            e.target.value
-                          )
-                        }
-                      />
-                    </Grid>
-
-                    <Grid item xs={12}>
                       <FormControl sx={{ width: "76%" }}>
-                        <InputLabel>Provincia de Entrega</InputLabel>
+                        <InputLabel>Provincia de entrega</InputLabel>
                         <Select
                           value={domicilioEntrega.provincia}
                           onChange={(e) =>
@@ -374,7 +405,33 @@ export default function Body() {
                             )
                           }
                         >
-                          <MenuItem value="Buenos Aires">Buenos Aires</MenuItem>
+                          {Object.keys(data2).map((provincia) => (
+                            <MenuItem key={provincia} value={provincia}>
+                              {provincia}
+                            </MenuItem>
+                          ))}
+                        </Select>
+                      </FormControl>
+                    </Grid>
+
+                    <Grid item xs={12}>
+                      <FormControl sx={{ width: "76%" }}>
+                        <InputLabel>Localidad de Entrega</InputLabel>
+                        <Select
+                          value={domicilioEntrega.localidad}
+                          onChange={(e) =>
+                            handleChangeDomicilio(
+                              "entrega",
+                              "localidad",
+                              e.target.value
+                            )
+                          }
+                        >
+                          {localidadesEntrega.map((localidad) => (
+                            <MenuItem key={localidad} value={localidad}>
+                              {localidad}
+                            </MenuItem>
+                          ))}
                         </Select>
                       </FormControl>
                     </Grid>
@@ -398,7 +455,11 @@ export default function Body() {
             </Grid>
 
             <Grid item xs={12}>
-              <Button variant="contained" component="label" className={clases.btnColor}>
+              <Button
+                variant="contained"
+                component="label"
+                className={clases.btnColor}
+              >
                 Subir Fotos
                 <input
                   accept="image/jpeg,image/png"
@@ -426,7 +487,12 @@ export default function Body() {
             </Grid>
 
             <Grid item xs={12}>
-              <Button variant="contained" disabled={false} onClick={publicarPedido} className={clases.btnColor}>
+              <Button
+                variant="contained"
+                disabled={false}
+                onClick={publicarPedido}
+                className={clases.btnColor}
+              >
                 Publicar pedido
               </Button>
             </Grid>

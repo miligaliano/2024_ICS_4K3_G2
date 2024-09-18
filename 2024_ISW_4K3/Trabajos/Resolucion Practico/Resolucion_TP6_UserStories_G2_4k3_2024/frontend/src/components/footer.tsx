@@ -1,4 +1,4 @@
-import { Typography, Grid, Link, IconButton } from "@mui/material";
+import { Typography, Grid, IconButton } from "@mui/material";
 import { Facebook, Twitter, Instagram } from "@mui/icons-material";
 import clases from "../Styles/Componente.module.css";
 
@@ -16,31 +16,6 @@ export default function Footer() {
                     </Typography>
                 </Grid>
 
-                {/* Sección 2: Enlaces rápidos */}
-                {/* <Grid item xs={12} sm={4}>
-                    <Typography variant="h6" className={clases.footerSection}>
-                        Enlaces rápidos
-                    </Typography>
-                    <ul className={clases.footerList}>
-                        <li>
-                            <Link href="/" color="inherit" underline="hover">
-                                Inicio
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="/about" color="inherit" underline="hover">
-                                Acerca de
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="/contact" color="inherit" underline="hover">
-                                Contacto
-                            </Link>
-                        </li>
-                    </ul>
-                </Grid> */}
-
-                {/* Sección 3: Redes sociales */}
                 <Grid item xs={12} sm={4}>
                     <Typography variant="h6" className={clases.footerSection}>
                         Síguenos

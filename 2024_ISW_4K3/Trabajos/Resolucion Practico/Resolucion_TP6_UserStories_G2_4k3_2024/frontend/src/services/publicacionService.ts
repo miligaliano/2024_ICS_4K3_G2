@@ -10,3 +10,12 @@ export const postPublicarPedido = async(parametros:any) => {
         throw error;
     }
 }
+
+export const obtenerProvinciasYLocalidades = async() => {
+    const response = await API_BACK.get(`${apiBack}/provincias-localidades`)
+    try {
+    return response.data;
+    } catch (error) {
+        throw error;
+    }
+}
