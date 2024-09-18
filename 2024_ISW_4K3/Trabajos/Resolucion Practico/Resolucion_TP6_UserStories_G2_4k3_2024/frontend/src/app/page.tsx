@@ -5,9 +5,12 @@ import Footer from "@/components/footer";
 import Header from "@/components/header";
 import { SnackbarProvider } from "notistack";
 import clases from '../Styles/Componente.module.css'
+import { useState } from "react";
 
 
 export default function Page() {
+    const [notificaciones, setNotificaciones] = useState([]);
+        
 
     return (
         <>
@@ -24,9 +27,9 @@ export default function Page() {
 
             <div className={clases.global}>
                 <div className={clases.main}>
-                    <Header />
+                    <Header notificaciones={notificaciones}/>
                     <SnackbarProvider>
-                        <Body />
+                        <Body setNotificaciones={setNotificaciones} notificaciones={notificaciones}/>
                     </SnackbarProvider>
                     <Footer />
                 </div>

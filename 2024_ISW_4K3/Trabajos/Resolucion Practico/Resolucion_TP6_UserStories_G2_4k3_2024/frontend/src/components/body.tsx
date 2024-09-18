@@ -28,7 +28,7 @@ import { useEffect, useState } from "react";
 import clases from "../Styles/Componente.module.css";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
-export default function Body() {
+export default function Body({notificaciones, setNotificaciones}) {
   const [domicilioRetiro, setDomicilioRetiro] = useState({
     calle: "",
     numero: "",
@@ -125,10 +125,12 @@ export default function Body() {
         referencia: domicilioRetiro.referencia,
       },
     };
-
+    
+    
     try {
       await postPublicarPedido(parametros);
       mostrarMensaje("Pedido publicado con éxito", "success");
+      setNotificaciones((notificaciones) => [...notificaciones, "Pedido publicado"]);
     } catch (error) {
       mostrarMensaje("No se pudo publicar el pedido", "error");
     }
@@ -165,6 +167,8 @@ export default function Body() {
       handleChangeDomicilio("entrega", "localidad", "");
     }
   }, [domicilioEntrega.provincia, data2]);
+
+  console.log(notificaciones)
 
   return (
     <div className={clases.body}>

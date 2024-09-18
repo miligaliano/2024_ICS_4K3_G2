@@ -2,16 +2,12 @@ import { IconButton, Badge, Menu, MenuItem, Typography } from "@mui/material";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import { useState } from "react";
 
-export default function Notificaciones() {
+
+
+export default function Notificaciones({notificaciones}) {
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
 
-    const notificaciones = [
-        "Notif 1",
-        "Notif 2",
-        "Notif 3",
-        "Notif 4",
-    ];
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -42,9 +38,9 @@ export default function Notificaciones() {
                 }}
             >
                 {notificaciones.length > 0 ? (
-                    notificaciones.map((notificacion, index) => (
+                    notificaciones.map((notif, index) => (
                         <MenuItem key={index} onClick={handleClose}>
-                            {notificacion}
+                            {notif}
                         </MenuItem>
                     ))
                 ) : (
