@@ -45,7 +45,7 @@ export default function Notificaciones({ notificaciones, setNotificaciones }) {
         {notificaciones.length > 0 ? (
           notificaciones.map((notif, index) => (
             <MenuItem key={index} onClick={handleClose} >
-                <Typography variant="body2" sx={{ flexGrow: 1, color:"#90E0EF"}}>
+                <Typography variant="body2" sx={{ flexGrow: 1, color:"#03045E"}}>
                     {notif}
               </Typography>
               <IconButton
@@ -63,7 +63,7 @@ export default function Notificaciones({ notificaciones, setNotificaciones }) {
           ))
         ) : (
           <MenuItem>
-            <Typography sx={{color:"#90E0EF"}}>Sin notificaciones</Typography>
+            <Typography sx={{color:"#03045E"}}>Sin notificaciones</Typography>
           </MenuItem>
         )}
       </Menu>
