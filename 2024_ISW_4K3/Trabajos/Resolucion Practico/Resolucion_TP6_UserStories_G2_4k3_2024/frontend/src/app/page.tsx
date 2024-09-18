@@ -27,7 +27,7 @@ export default function Page() {
 
             <div className={clases.global}>
                 <div className={clases.main}>
-                    <Header notificaciones={notificaciones}/>
+                    <Header setNotificaciones={setNotificaciones} notificaciones={notificaciones}/>
                     <SnackbarProvider>
                         <Body setNotificaciones={setNotificaciones} notificaciones={notificaciones}/>
                     </SnackbarProvider>

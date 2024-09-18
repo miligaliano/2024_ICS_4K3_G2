@@ -11,7 +11,7 @@ export default function Footer() {
                     <Typography variant="h5" className={clases.footerTitle}>
                         TANGO APP
                     </Typography>
-                    <Typography variant="body2" color="textSecondary" className={clases.footerSubtitle}>
+                    <Typography variant="body2" className={clases.footerSubtitle}>
                         Creado por el Grupo N° 2
                     </Typography>
                 </Grid>

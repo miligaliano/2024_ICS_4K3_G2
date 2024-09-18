@@ -84,6 +84,7 @@ export default function Body({notificaciones, setNotificaciones}) {
       enqueueSnackbar("Por favor, selecciona fechas validas", {
         variant: "error",
       });
+      setNotificaciones((notificaciones) => [...notificaciones, "No se pudo publicar el pedido"]);
       return;
     }
 
@@ -91,6 +92,7 @@ export default function Body({notificaciones, setNotificaciones}) {
       enqueueSnackbar("La fecha de retiro debe ser igual o posterior a hoy", {
         variant: "error",
       });
+      setNotificaciones((notificaciones) => [...notificaciones, "No se pudo publicar el pedido"]);
       return;
     }
 
@@ -99,6 +101,7 @@ export default function Body({notificaciones, setNotificaciones}) {
         "La fecha de entrega debe ser igual o posterior a la fecha de retiro",
         { variant: "error" }
       );
+      setNotificaciones((notificaciones) => [...notificaciones, "No se pudo publicar el pedido"]);
       return;
     }
 
@@ -130,9 +133,10 @@ export default function Body({notificaciones, setNotificaciones}) {
     try {
       await postPublicarPedido(parametros);
       mostrarMensaje("Pedido publicado con éxito", "success");
-      setNotificaciones((notificaciones) => [...notificaciones, "Pedido publicado"]);
+      setNotificaciones((notificaciones) => [...notificaciones, "Pedido publicado con éxito"]);
     } catch (error) {
       mostrarMensaje("No se pudo publicar el pedido", "error");
+      setNotificaciones((notificaciones) => [...notificaciones, "No se pudo publicar el Pedido"]);
     }
   };
 
@@ -168,7 +172,6 @@ export default function Body({notificaciones, setNotificaciones}) {
     }
   }, [domicilioEntrega.provincia, data2]);
 
-  console.log(notificaciones)
 
   return (
     <div className={clases.body}>
@@ -182,26 +185,26 @@ export default function Body({notificaciones, setNotificaciones}) {
             sx={{ margin: 1 }}
           >
             <Grid item xs={12}>
-              <Accordion sx={{ width: "90%" }}>
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
+              <Accordion sx={{ width: "90%", Color:"#90E0EF" }}>
+              <AccordionSummary sx={{backgroundColor:"#0077B6", color:"#90E0EF"}}
+                  expandIcon={<ExpandMoreIcon sx={{color:"#90E0EF"}}/>}
                   aria-controls="panel1-content"
                   id="panel1-header"
                 >
                   Tipo de carga y fechas
                 </AccordionSummary>
-                <AccordionDetails>
+                <AccordionDetails sx={{backgroundColor:"#CAF0F8"}}>
                   <Grid
                     container
                     justifyContent={"flex-start"}
                     alignItems={"flex-start"}
                     spacing={2}
-                    sx={{ margin: 1 }}
+                    sx={{ margin: 1}}
                   >
                     <Grid item xs={12}>
-                      <FormControl sx={{ width: "76%" }}>
+                      <FormControl sx={{ width: "76%", backgroundColor:"#CAF0F8" }}>
                         <InputLabel>Tipo de Carga</InputLabel>
-                        <Select
+                        <Select sx={{backgroundColor:"#CAF0F8"}}
                           value={tipoCarga}
                           label="Tipo de Carga"
                           onChange={handleChangeTipoCarga}
@@ -223,7 +226,7 @@ export default function Body({notificaciones, setNotificaciones}) {
                         value={fechaRetiro}
                         onChange={(newValue) => setFechaRetiro(newValue)}
                         renderInput={(params) => (
-                          <TextField fullWidth margin="normal" {...params} />
+                          <TextField sx={{backgroundColor:"#CAF0F8"}} fullWidth margin="normal" {...params} />
                         )}
                       />
                     </Grid>
@@ -235,7 +238,7 @@ export default function Body({notificaciones, setNotificaciones}) {
                         value={fechaEntrega}
                         onChange={(newValue) => setFechaEntrega(newValue)}
                         renderInput={(params) => (
-                          <TextField fullWidth margin="normal" {...params} />
+                          <TextField sx={{backgroundColor:"#CAF0F8"}} fullWidth margin="normal" {...params} />
                         )}
                       />
                     </Grid>
@@ -246,14 +249,14 @@ export default function Body({notificaciones, setNotificaciones}) {
 
             <Grid item xs={12}>
               <Accordion sx={{ width: "90%" }}>
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
+              <AccordionSummary sx={{backgroundColor:"#0077B6", color:"#90E0EF"}}
+                  expandIcon={<ExpandMoreIcon sx={{color:"#90E0EF"}}/>}
                   aria-controls="panel1-content"
                   id="panel1-header"
                 >
                   Domicilio de retiro
                 </AccordionSummary>
-                <AccordionDetails>
+                <AccordionDetails sx={{backgroundColor:"#CAF0F8", color:"#90E0EF"}}>
                   <Grid
                     container
                     justifyContent={"flex-start"}
@@ -353,14 +356,14 @@ export default function Body({notificaciones, setNotificaciones}) {
 
             <Grid item xs={12}>
               <Accordion sx={{ width: "90%" }}>
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
+              <AccordionSummary sx={{backgroundColor:"#0077B6", color:"#90E0EF"}}
+                  expandIcon={<ExpandMoreIcon sx={{color:"#90E0EF"}}/>}
                   aria-controls="panel1-content"
                   id="panel1-header"
                 >
                   Domicilio de Entrega
                 </AccordionSummary>
-                <AccordionDetails>
+                <AccordionDetails sx={{backgroundColor:"#CAF0F8", color:"#90E0EF"}}>
                   <Grid
                     container
                     justifyContent={"flex-start"}

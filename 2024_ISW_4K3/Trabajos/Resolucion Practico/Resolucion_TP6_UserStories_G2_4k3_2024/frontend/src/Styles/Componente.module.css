@@ -14,6 +14,8 @@ Componente.module.css
     height: 100%;
     overflow-x: hidden; 
     overflow-y: hidden;
+    background-color: #90E0EF;
+
 }
 
 .pie {
@@ -71,13 +73,13 @@ Componente.module.css
 
 .btnColor {
     background-color: #0077B6;
-    color:#ffffff;
+    color:#90E0EF;
 }
 
 
 .footer {
     background-color: #0077B6; 
-    color: #ECF0F1; 
+    color: #90E0EF; 
     padding: 20px 10px; 
     /*padding-bottom: 70px;*/
     margin-top: 55px; 
@@ -89,14 +91,14 @@ Componente.module.css
 .footerTitle {
     font-size: 20px; 
     font-weight: bold;
-    color: #ECF0F1;
+    color: #90E0EF;
     margin-bottom: 5px; 
     font-family: sans-serif; 
 
 }
 
 .footerSubtitle {
-    color: #BDC3C7; 
+    color: #90E0EF; 
     font-size: 12px; 
     font-family: sans-serif; 
 
@@ -117,12 +119,12 @@ Componente.module.css
 }
 
 .footerList a {
-    color: #ECF0F1;
+    color: #90E0EF;
     transition: color 0.3s ease;
 }
 
 .footerList a:hover {
-    color: #3498DB; 
+    color: #90E0EF; 
 }
 
 .socialIcons {
@@ -133,7 +135,7 @@ Componente.module.css
 .copyright {
     margin-top: 10px; 
     font-size: 12px; 
-    color: #BDC3C7; 
+    color: #90E0EF; 
     text-align: center;
 }
 
@@ -163,7 +165,7 @@ Componente.module.css
 .titulo {
     font-size: 24px; 
     font-weight: bold;
-    color: #ECF0F1;
+    color: #90E0EF;
     font-family: 'Poppins', sans-serif;
    
 }
