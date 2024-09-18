@@ -82,7 +82,7 @@ export default function Body({notificaciones, setNotificaciones}) {
   const publicarPedido = async () => {
     if (!fechaRetiro || !fechaEntrega) {
       enqueueSnackbar("Por favor, selecciona fechas validas", {
-        variant: "error",
+        variant: "error", style:{backgroundColor:"#03045E", color:"#00B4D8"}
       });
       setNotificaciones((notificaciones) => [...notificaciones, "No se pudo publicar el pedido"]);
       return;
@@ -90,7 +90,7 @@ export default function Body({notificaciones, setNotificaciones}) {
 
     if (fechaRetiro.isBefore(dayjs().day() - 1)) {
       enqueueSnackbar("La fecha de retiro debe ser igual o posterior a hoy", {
-        variant: "error",
+        variant: "error", style:{backgroundColor:"#03045E", color:"#00B4D8"}
       });
       setNotificaciones((notificaciones) => [...notificaciones, "No se pudo publicar el pedido"]);
       return;
@@ -99,7 +99,7 @@ export default function Body({notificaciones, setNotificaciones}) {
     if (fechaEntrega.isBefore(fechaRetiro)) {
       enqueueSnackbar(
         "La fecha de entrega debe ser igual o posterior a la fecha de retiro",
-        { variant: "error" }
+        { variant: "error" , style:{backgroundColor:"#03045E", color:"#00B4D8"}}
       );
       setNotificaciones((notificaciones) => [...notificaciones, "No se pudo publicar el pedido"]);
       return;
@@ -132,7 +132,7 @@ export default function Body({notificaciones, setNotificaciones}) {
     
     try {
       await postPublicarPedido(parametros);
-      mostrarMensaje("Pedido publicado con éxito", "success");
+      mostrarMensaje("Pedido publicado con éxito", "success", );
       setNotificaciones((notificaciones) => [...notificaciones, "Pedido publicado con éxito"]);
     } catch (error) {
       mostrarMensaje("No se pudo publicar el pedido", "error");
@@ -141,7 +141,11 @@ export default function Body({notificaciones, setNotificaciones}) {
   };
 
   const mostrarMensaje = (mensaje: string, variant: VariantType) => {
-    enqueueSnackbar(mensaje, { variant });
+    if (variant === 'success'){
+      enqueueSnackbar(mensaje, { variant, style:{backgroundColor:"#00B4D8", color:"#CAF0F8"} });
+    } else{
+      enqueueSnackbar(mensaje, { variant, style:{backgroundColor:"#03045E", color:"#CAF0F8"} });
+    }
   };
 
   useEffect(() => {

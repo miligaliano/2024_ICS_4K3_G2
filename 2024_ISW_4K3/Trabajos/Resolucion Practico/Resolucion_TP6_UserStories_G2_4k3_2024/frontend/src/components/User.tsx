@@ -32,8 +32,8 @@ export default function UsuarioLogueado({ nombreUsuario }) {
                     horizontal: 'right',
                 }}
             >
-                <MenuItem onClick={handleClose}>Perfil</MenuItem>
-                <MenuItem onClick={handleClose}>Cerrar Sesión</MenuItem>
+                <MenuItem onClick={handleClose} sx={{ color:"#03045E"}}>Perfil</MenuItem>
+                <MenuItem onClick={handleClose} sx={{ color:"#03045E"}}>Cerrar Sesión</MenuItem>
             </Menu>
             <Typography variant="body1" sx={{ ml: 1 }} sx={{color:"#CAF0F8"}}>
                 {nombreUsuario}
