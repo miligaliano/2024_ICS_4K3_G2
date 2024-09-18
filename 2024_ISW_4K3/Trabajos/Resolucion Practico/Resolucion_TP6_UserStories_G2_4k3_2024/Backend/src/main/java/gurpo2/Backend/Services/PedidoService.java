@@ -41,7 +41,8 @@ public class PedidoService {
                     " \nNumero: " + datosRequest.getDomicilioEntrega().getNumero() +
                     " \nLocalidad de entrega: " + datosRequest.getDomicilioEntrega().getLocalidad() +
                     " \nProvincia de entrega: " + datosRequest.getDomicilioEntrega().getProvincia() +
-                    " \nReferencia de entrega: " +datosRequest.getDomicilioEntrega().getReferencia());
+                    " \nReferencia de entrega: " + datosRequest.getDomicilioEntrega().getReferencia() +
+                    " \nFotos: " + " ");
 
         } catch (MessagingException e) {
             e.printStackTrace();
