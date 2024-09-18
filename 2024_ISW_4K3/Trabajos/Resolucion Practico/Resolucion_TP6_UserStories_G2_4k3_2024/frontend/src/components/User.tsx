@@ -17,7 +17,7 @@ export default function UsuarioLogueado({ nombreUsuario }) {
     return (
         <div>
             <IconButton onClick={handleClick} sx={{color:"#90E0EF"}}>
-                <Avatar sx={{backgroundColor:"#90E0EF", color:"#0077B6"}}>{nombreUsuario[0]}</Avatar>
+                <Avatar sx={{backgroundColor:"#90E0EF", color:"#CAF0F8"}}>{nombreUsuario[0]}</Avatar>
             </IconButton>
             <Menu
                 anchorEl={anchorEl}
@@ -35,7 +35,7 @@ export default function UsuarioLogueado({ nombreUsuario }) {
                 <MenuItem onClick={handleClose}>Perfil</MenuItem>
                 <MenuItem onClick={handleClose}>Cerrar Sesión</MenuItem>
             </Menu>
-            <Typography variant="body1" sx={{ ml: 1 }} sx={{color:"#90E0EF"}}>
+            <Typography variant="body1" sx={{ ml: 1 }} sx={{color:"#CAF0F8"}}>
                 {nombreUsuario}
             </Typography>
         </div>

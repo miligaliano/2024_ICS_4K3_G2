@@ -186,7 +186,7 @@ export default function Body({notificaciones, setNotificaciones}) {
           >
             <Grid item xs={12}>
               <Accordion sx={{ width: "90%", Color:"#90E0EF" }}>
-              <AccordionSummary sx={{backgroundColor:"#0077B6", color:"#90E0EF"}}
+              <AccordionSummary sx={{backgroundColor:"#0077B6", color:"#CAF0F8"}}
                   expandIcon={<ExpandMoreIcon sx={{color:"#90E0EF"}}/>}
                   aria-controls="panel1-content"
                   id="panel1-header"
@@ -249,7 +249,7 @@ export default function Body({notificaciones, setNotificaciones}) {
 
             <Grid item xs={12}>
               <Accordion sx={{ width: "90%" }}>
-              <AccordionSummary sx={{backgroundColor:"#0077B6", color:"#90E0EF"}}
+              <AccordionSummary sx={{backgroundColor:"#0077B6", color:"#CAF0F8"}}
                   expandIcon={<ExpandMoreIcon sx={{color:"#90E0EF"}}/>}
                   aria-controls="panel1-content"
                   id="panel1-header"
@@ -356,7 +356,7 @@ export default function Body({notificaciones, setNotificaciones}) {
 
             <Grid item xs={12}>
               <Accordion sx={{ width: "90%" }}>
-              <AccordionSummary sx={{backgroundColor:"#0077B6", color:"#90E0EF"}}
+              <AccordionSummary sx={{backgroundColor:"#0077B6", color:"#CAF0F8"}}
                   expandIcon={<ExpandMoreIcon sx={{color:"#90E0EF"}}/>}
                   aria-controls="panel1-content"
                   id="panel1-header"

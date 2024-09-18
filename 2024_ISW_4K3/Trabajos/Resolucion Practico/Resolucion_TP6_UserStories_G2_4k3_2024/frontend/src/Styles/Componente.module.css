@@ -14,7 +14,7 @@ Componente.module.css
     height: 100%;
     overflow-x: hidden; 
     overflow-y: hidden;
-    background-color: #90E0EF;
+    background-color: #CAF0F8;
 
 }
 
@@ -73,13 +73,13 @@ Componente.module.css
 
 .btnColor {
     background-color: #0077B6;
-    color:#90E0EF;
+    color:#CAF0F8;
 }
 
 
 .footer {
     background-color: #0077B6; 
-    color: #90E0EF; 
+    color: #CAF0F8; 
     padding: 20px 10px; 
     /*padding-bottom: 70px;*/
     margin-top: 55px; 
@@ -91,14 +91,14 @@ Componente.module.css
 .footerTitle {
     font-size: 20px; 
     font-weight: bold;
-    color: #90E0EF;
+    color: #CAF0F8;
     margin-bottom: 5px; 
     font-family: sans-serif; 
 
 }
 
 .footerSubtitle {
-    color: #90E0EF; 
+    color: #CAF0F8; 
     font-size: 12px; 
     font-family: sans-serif; 
 
@@ -135,7 +135,7 @@ Componente.module.css
 .copyright {
     margin-top: 10px; 
     font-size: 12px; 
-    color: #90E0EF; 
+    color: #CAF0F8; 
     text-align: center;
 }
 
@@ -165,7 +165,7 @@ Componente.module.css
 .titulo {
     font-size: 24px; 
     font-weight: bold;
-    color: #90E0EF;
+    color: #CAF0F8;
     font-family: 'Poppins', sans-serif;
    
 }
