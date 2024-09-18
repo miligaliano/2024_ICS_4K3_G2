@@ -1,14 +1,22 @@
 package gurpo2.Backend.Services;
 
 import gurpo2.Backend.Dtos.Request.DatosRequest;
+import gurpo2.Backend.Dtos.Response.MockProvinciasLocalidades;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
 import java.text.SimpleDateFormat;
+import java.util.List;
+import java.util.Map;
 
 
 @Service
+@RequiredArgsConstructor
 public class PedidoService {
+
+    private final MockProvinciasLocalidades mockProvinciasLocalidades;
 
     public void enviarMail(DatosRequest datosRequest){
         String host = "smtp.gmail.com";
@@ -38,5 +46,9 @@ public class PedidoService {
         } catch (MessagingException e) {
             e.printStackTrace();
         }
+    }
+
+    public Map<String, List<String>> getProvinviasYLocalidades() {
+        return mockProvinciasLocalidades.getProvinciasYLocalidades();
     }
 }
