@@ -79,7 +79,20 @@ export default function Body({notificaciones, setNotificaciones}) {
     }
   };
 
+
+
   const publicarPedido = async () => {
+    const fotosBase64 = await Promise.all(
+      fotos.map(async (foto) => {
+        const reader = new FileReader();
+        return new Promise<string>((resolve, reject) => {
+          reader.onloadend = () => resolve(reader.result as string);
+          reader.onerror = reject;
+          reader.readAsDataURL(foto);  // Convierte la imagen a base64
+        });
+      })
+    );
+
     if (!fechaRetiro || !fechaEntrega) {
       enqueueSnackbar("Por favor, selecciona fechas validas", {
         variant: "error", style:{backgroundColor:"#03045E", color:"#00B4D8"}
@@ -107,7 +120,7 @@ export default function Body({notificaciones, setNotificaciones}) {
 
     const parametros = {
       tipoCarga: tipoCarga,
-
+      fotos: fotosBase64,
       fechas: {
         fechaEntrega: fechaEntrega,
         fechaRetiro: fechaRetiro,
@@ -484,9 +497,9 @@ export default function Body({notificaciones, setNotificaciones}) {
 
             <Grid item xs={3} md={5}>
               <ImageList
-                sx={{ width: "1000%", height: "1000%" }}
-                cols={3}
-                rowHeight={164}
+                sx={{ width: "300%", height: "auto" }}
+                cols={1}
+                rowHeight={400}
                 style={{ marginTop: 16 }}
               >
                 {fotoURLs.map((url, index) => (
