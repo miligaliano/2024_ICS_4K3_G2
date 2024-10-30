@@ -21,14 +21,14 @@ public class PedidoService {
     public void enviarMail(DatosRequest datosRequest){
         String host = "smtp.gmail.com";
         String port = "587";
-        String username = "guidedios03@gmail.com";
-        String password = "buwe pxlg mwpu rlmm";
+        String username = "octavioescudero448@gmail.com";
+        String password = "twoc oyep nwgg tbtr";
 
         EmailSender emailSender = new EmailSender(host, port, username, password);
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
         try {
-            emailSender.sendEmail("nico_marchiori@hotmail.com", "Nuevo pedido de envío",
+            emailSender.sendEmail("elcorreodemaximiliano@gmail.com", "Nuevo pedido de envío",
                     "Tipo de carga: " + datosRequest.getTipoCarga() +
                     " \nFecha de retiro: " + sdf.format(datosRequest.getFechas().getFechaRetiro()) +
                     " \nFecha de Entrega: " + sdf.format(datosRequest.getFechas().getFechaEntrega()) +
